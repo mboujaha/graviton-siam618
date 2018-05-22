@@ -1,0 +1,40 @@
+<header class="v-header container-landing">
+  <div class="fullscreen-video-wrap">
+    <video src="/assets/videos/video2.mp4" autoplay="true" loop="true" type="video/mp4"></video>
+  </div>
+  <div class="header-overlay">
+  </div>
+  <div class="content-landing">
+    <div #rendererContainer class="mb4"></div>
+    <div class="login-html">
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{ errorMessage}}
+      </div>
+      <form (ngSubmit)="submitForm(f)" #f="ngForm" novalidate>
+        <div class="login-form">
+          <div class="sign-in-htm">
+            <div class="group">
+              <input id="user" name="username"  class="input" placeholder="username"
+                     ngModel  #unField="ngModel" required>
+            </div>
+            <div class="group">
+              <input id="pass" name="password" type="password" class="input" placeholder="password"
+                     ngModel required  #psField="ngModel">
+            </div>
+            <div class="group">
+              <input id="check" type="checkbox" class="check" checked>
+              <label for="check"><span class="icon"></span> Keep me Signed in</label>
+            </div>
+            <div class="group">
+              <button type="submit" class="btn button" [disabled]="!f.valid"> Login</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
+
+
+
+
