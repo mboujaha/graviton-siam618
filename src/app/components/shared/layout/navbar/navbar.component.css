@@ -1,0 +1,18 @@
+.oo {
+  align-self: center;
+  margin-top: 4px;
+}
+.adjust{
+  margin-top: 1vh;
+}
+
+@media  screen and (max-width: 1200px){
+  .nav-link{
+    font-size: 0.9em;
+  }
+
+  .navbar-brand{
+    font-size: 0.9em
+  }
+
+}
