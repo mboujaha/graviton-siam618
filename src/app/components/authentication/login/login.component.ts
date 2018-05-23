@@ -2,8 +2,9 @@ import {NgForm} from '@angular/forms';
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {} from '../../assets/build';
 import * as THREE from 'three';
-import {LoginModel} from '../../models/login.model';
-import {AuthService} from '../../services/auth.service';
+import {LoginModel} from '../../../../entities/loginModel.entity';
+import {AuthenticationService} from '../../../../services/authentication.service';
+import {User} from '../../../../entities/user.entity';
 
 declare let require: any;
 
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   loader = null;
   errorMessage = null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthenticationService) {
 
     this.camera = new THREE.PerspectiveCamera(8, window.innerWidth / window.innerHeight, 1, 1000);
     this.cameraTarget = new THREE.Vector3(0, 0, 0);
@@ -98,14 +99,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     const login = new LoginModel();
 
-    login.username = values.username;
+    login.login = values.username;
     login.password = values.password;
 
     this.authService.login(login).subscribe(
-      (res) => {
+      (res: User) => {
         this.authService.setLoggedUser(res);
       },
-      (err) => {
+      (err)  => {
         this.errorMessage = err.message;
         form.reset();
       });
